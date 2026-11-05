@@ -1,0 +1,1745 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<title>假如穿越进日本三大特摄，你会成为谁？</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  body{font-family:"PingFang SC","Microsoft YaHei","Segoe UI",sans-serif;
+    background:linear-gradient(160deg,#ffe9b0 0%,#ffd5e5 45%,#c1e7ff 100%);
+    min-height:100vh;padding:18px 12px 90px;display:flex;justify-content:center;color:#3d2b1f;overflow-x:hidden;}
+  .deco{position:fixed;pointer-events:none;user-select:none;opacity:.32;z-index:0;}
+  .d1{top:4%;left:3%;font-size:2.6rem;transform:rotate(-14deg);}
+  .d2{top:24%;right:4%;font-size:3rem;transform:rotate(12deg);}
+  .d3{bottom:12%;left:4%;font-size:2.4rem;transform:rotate(8deg);}
+  .d4{bottom:6%;right:6%;font-size:3rem;transform:rotate(-10deg);}
+  .d5{top:52%;left:1%;font-size:2rem;opacity:.2;}
+
+  .app{width:100%;max-width:860px;position:relative;z-index:2;
+    background:rgba(255,255,255,.88);border:4px solid #fff;border-radius:44px;
+    box-shadow:0 20px 50px rgba(255,110,170,.28),0 8px 20px rgba(0,0,0,.08);
+    padding:22px 24px 26px;backdrop-filter:blur(8px);}
+  @media(max-width:600px){.app{padding:16px 14px 20px;border-radius:32px;}}
+
+  .topbar{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:8px;}
+  .logo{font-size:1.35rem;font-weight:900;letter-spacing:1px;
+    background:linear-gradient(120deg,#ff5f8f,#ffa63d,#28c8c8);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    filter:drop-shadow(1px 2px 0 #fff);}
+  @media(max-width:420px){.logo{font-size:1.05rem;}}
+  .admin-entry{flex:none;background:#ffd06b;border:2px solid #fff;border-radius:40px;
+    padding:8px 16px;font-size:.88rem;font-weight:800;color:#5e3a1c;cursor:pointer;
+    box-shadow:0 4px 0 #d49b3a;transition:.08s;}
+  .admin-entry:active{transform:translateY(4px);box-shadow:0 0 0 #d49b3a;}
+
+  .view{display:none;animation:fade .25s ease;}
+  .view.active{display:block;}
+  @keyframes fade{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+
+  .hero{text-align:center;padding:12px 0 6px;}
+  .hero h1{font-size:2.05rem;line-height:1.25;color:#ff4d6d;letter-spacing:1px;
+    text-shadow:2px 2px 0 #fff,5px 5px 0 rgba(255,190,205,.55);}
+  @media(max-width:600px){.hero h1{font-size:1.55rem;}}
+  @media(max-width:380px){.hero h1{font-size:1.3rem;}}
+  .hero .sub{display:inline-block;margin-top:12px;background:#fff8ec;border:2px dashed #ffb347;
+    border-radius:50px;padding:7px 20px;font-size:.98rem;font-weight:700;color:#7a5334;}
+  @media(max-width:380px){.hero .sub{font-size:.84rem;padding:6px 14px;}}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:26px 0 10px;}
+  .big-btn{border:3px solid #fff;border-radius:60px;padding:15px 34px;font-size:1.15rem;font-weight:900;
+    cursor:pointer;transition:.08s;color:#3d2b1f;display:inline-flex;align-items:center;gap:8px;}
+  .big-btn.primary{background:#ffd966;box-shadow:0 7px 0 #b58b2a;}
+  .big-btn.primary:active{transform:translateY(7px);box-shadow:0 0 0 #b58b2a;}
+  .big-btn.blue{background:#a7e0ff;box-shadow:0 7px 0 #5f9ec9;}
+  .big-btn.blue:active{transform:translateY(7px);box-shadow:0 0 0 #5f9ec9;}
+  .big-btn.pink{background:#ffb8d0;box-shadow:0 7px 0 #cf7f9c;}
+  .big-btn.pink:active{transform:translateY(7px);box-shadow:0 0 0 #cf7f9c;}
+  @media(max-width:420px){.big-btn{padding:13px 24px;font-size:1rem;}}
+
+  .peek{margin-top:24px;background:rgba(255,255,255,.65);border:2px solid #fff;
+    border-radius:32px;padding:14px 16px;}
+  .peek h3{font-size:1rem;color:#ff6b9d;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;}
+  .peek .more{font-size:.78rem;color:#a0764f;cursor:pointer;text-decoration:underline;font-weight:700;}
+  .chip-wrap{display:flex;flex-wrap:wrap;gap:8px;max-height:132px;overflow-y:auto;padding:6px;
+    background:#fffaf2;border-radius:22px;border:2px solid #ffe6c4;}
+  .chip{font-size:.78rem;font-weight:700;padding:5px 12px;border-radius:30px;border:2px solid #fff;
+    background:#ffeacd;color:#6b4f3c;white-space:nowrap;}
+  .chip.ot{background:#ffd9e6;color:#a33a63;}
+  .chip.kr{background:#cdeff5;color:#1c6d7d;}
+  .chip.sd{background:#ffe9b8;color:#8a5c14;}
+
+  .quiz-top{display:flex;justify-content:space-between;align-items:center;gap:10px;
+    background:#fff3dd;border:2px solid #fff;border-radius:40px;padding:8px 18px;margin-bottom:16px;
+    font-weight:800;font-size:.9rem;color:#8a5b34;}
+  .bar{height:9px;background:#ffe2c1;border-radius:20px;overflow:hidden;margin-bottom:18px;border:2px solid #fff;}
+  .bar>i{display:block;height:100%;width:0%;border-radius:20px;
+    background:linear-gradient(90deg,#ff9ec4,#ffbe6b,#5fd6d6);transition:width .3s ease;}
+  .q-text{font-size:1.16rem;font-weight:800;line-height:1.5;color:#2f2f2f;background:#fff;
+    border-left:9px solid #ffb347;border-radius:22px;padding:16px 18px;margin-bottom:20px;
+    box-shadow:0 5px 0 #ffe6c4;}
+  @media(max-width:600px){.q-text{font-size:1.02rem;}}
+  .options{display:flex;flex-direction:column;gap:11px;margin-bottom:22px;}
+  .option{display:flex;align-items:flex-start;gap:11px;background:#fff;border:3px solid #ffdcbb;
+    border-radius:44px;padding:13px 20px;font-size:.98rem;font-weight:700;color:#42342b;cursor:pointer;
+    box-shadow:0 4px 0 #ffe7cf;transition:.12s;}
+  .option:hover{background:#fff8ef;border-color:#ffbb6b;}
+  .option .mark{flex:none;width:26px;height:26px;border-radius:50%;background:#ffe2c1;color:#a16a2c;
+    display:flex;align-items:center;justify-content:center;font-size:.82rem;font-weight:900;}
+  .option.sel{background:#ffe28a;border-color:#ff9f1c;box-shadow:0 4px 0 #d68a1c;}
+  .option.sel .mark{background:#ff9f1c;color:#fff;}
+  .option.sel-multi{background:#bfe9ff;border-color:#3fa2dd;box-shadow:0 4px 0 #2b7cb0;}
+  .option.sel-multi .mark{background:#3fa2dd;color:#fff;}
+  .nav{display:flex;gap:12px;}
+  .nav-btn{flex:1;text-align:center;border:3px solid #fff;border-radius:44px;padding:13px 10px;
+    font-size:1.02rem;font-weight:900;cursor:pointer;color:#1e3a4b;background:#b6e3ea;
+    box-shadow:0 6px 0 #6f9aac;transition:.08s;}
+  .nav-btn:active{transform:translateY(6px);box-shadow:0 0 0 #6f9aac;}
+  .nav-btn:disabled{opacity:.38;pointer-events:none;}
+  .nav-btn.go{background:#ffd966;color:#5b3a10;box-shadow:0 6px 0 #b58b2a;}
+  .nav-btn.go:active{box-shadow:0 0 0 #b58b2a;}
+  .multi-tip{font-size:.8rem;color:#b07a45;font-weight:700;margin:-10px 0 14px;text-align:center;}
+
+  .quiz-back{width:100%;margin-top:12px;border:3px solid #fff;border-radius:44px;padding:12px 10px;
+    font-size:.98rem;font-weight:900;cursor:pointer;color:#7d2450;background:#ffb8d0;
+    box-shadow:0 6px 0 #cf7f9c;transition:.08s;}
+  .quiz-back:active{transform:translateY(6px);box-shadow:0 0 0 #cf7f9c;}
+
+  .result{background:#fffaf0;border:5px solid #ffd79a;border-radius:40px;padding:22px 20px;
+    text-align:center;box-shadow:inset 0 0 0 4px #fff;}
+  .res-img{width:150px;height:150px;margin:0 auto 8px;border-radius:50%;overflow:hidden;
+    background:linear-gradient(145deg,#ffe9c9,#ffd0e2);border:5px solid #fff;
+    box-shadow:0 10px 22px rgba(255,160,90,.35);display:flex;align-items:center;justify-content:center;font-size:4.2rem;}
+  .res-img img{width:100%;height:100%;object-fit:cover;}
+  .res-name{font-size:1.85rem;font-weight:900;margin:6px 0 4px;
+    background:linear-gradient(120deg,#e63946,#f4a261,#2a9d8f);
+    -webkit-background-clip:text;background-clip:text;color:transparent;}
+  .res-series{display:inline-block;font-size:.8rem;font-weight:800;padding:4px 14px;border-radius:30px;
+    background:#ffe9b8;color:#8a5c14;margin-bottom:12px;}
+  .res-desc{background:#fff;border:2px solid #ffd966;border-radius:26px;padding:15px 18px;
+    font-size:.96rem;line-height:1.7;color:#4a382c;text-align:left;margin:8px 0 16px;}
+  .res-actions{display:flex;flex-direction:column;gap:10px;}
+
+  .roster-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:14px;flex-wrap:wrap;}
+  .roster-head h2{font-size:1.15rem;color:#ff5f8f;}
+  .roster-head .cnt{font-size:.8rem;font-weight:800;color:#a0764f;background:#fff3dd;
+    padding:4px 12px;border-radius:30px;border:2px solid #fff;}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(126px,1fr));gap:12px;
+    max-height:60vh;overflow-y:auto;padding:6px;background:#fffdf8;border-radius:26px;border:2px solid #ffedd6;}
+  @media(max-width:420px){.grid{grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:9px;}}
+  .card{background:#fff;border:3px solid #fff;border-radius:22px;padding:10px 8px;text-align:center;
+    box-shadow:0 4px 0 rgba(0,0,0,.05);border-top:6px solid var(--c,#ffb347);transition:transform .12s;}
+  .card:hover{transform:translateY(-3px);}
+  .card .ph{width:70px;height:70px;margin:0 auto 6px;border-radius:50%;overflow:hidden;
+    background:linear-gradient(145deg,#fff2dc,#ffe0ee);border:3px solid #fff;
+    display:flex;align-items:center;justify-content:center;font-size:2rem;}
+  .card .ph img{width:100%;height:100%;object-fit:cover;}
+  .card .nm{font-size:.82rem;font-weight:900;line-height:1.25;color:#3d2b1f;word-break:break-all;}
+  .card .sr{font-size:.66rem;font-weight:800;margin-top:3px;padding:2px 8px;border-radius:20px;
+    display:inline-block;background:#fff0d6;color:#946a38;}
+  .card .tg{font-size:.64rem;color:#a08c7a;margin-top:4px;line-height:1.3;overflow:hidden;
+    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;}
+  @media(max-width:420px){
+    .card .ph{width:56px;height:56px;font-size:1.6rem;}
+    .card .nm{font-size:.74rem;}
+    .card .sr{font-size:.6rem;}
+    .card .tg{font-size:.58rem;}
+  }
+
+  .admin-box{background:#fffdf8;border:3px solid #ffe0b5;border-radius:30px;padding:16px;
+    max-height:64vh;overflow-y:auto;}
+  .admin-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap;}
+  .admin-head h2{font-size:1.1rem;color:#e76f51;}
+  .head-btns{display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
+  .save-img-btn{background:#ffb8d0;border:2px solid #fff;border-radius:40px;padding:9px 16px;
+    font-size:.82rem;font-weight:900;color:#7d2450;cursor:pointer;box-shadow:0 4px 0 #cf7f9c;transition:.08s;}
+  .save-img-btn:active{transform:translateY(4px);box-shadow:0 0 0 #cf7f9c;}
+  .save-img-btn.has-draft{background:#ffd966;color:#5b3a10;box-shadow:0 4px 0 #b58b2a;animation:pulse 1s infinite;}
+  @keyframes pulse{0%,100%{filter:brightness(1);}50%{filter:brightness(1.18);}}
+
+  .add-form{display:grid;grid-template-columns:1fr 1fr;gap:8px;background:#fff3dd;border-radius:22px;
+    padding:12px;margin-bottom:14px;border:2px solid #fff;}
+  .add-form input[type=text]{width:100%;padding:9px 13px;border-radius:30px;border:2px solid #ffd5b0;
+    font-size:.85rem;outline:none;background:#fff;}
+  .add-form input[type=text]:focus{border-color:#ff9f1c;}
+  .add-form .file-line{grid-column:1/-1;display:flex;align-items:center;gap:8px;font-size:.78rem;
+    color:#8a6a4c;font-weight:700;flex-wrap:wrap;}
+  .add-form .file-line input[type=file]{font-size:.76rem;max-width:100%;}
+  .add-form .add-row{grid-column:1/-1;display:flex;gap:8px;}
+  .add-form button{flex:1;border:none;border-radius:30px;padding:10px;font-weight:900;font-size:.9rem;
+    cursor:pointer;background:#a7e0a7;color:#255a25;box-shadow:0 4px 0 #5a9e5a;transition:.08s;}
+  .add-form button:active{transform:translateY(4px);box-shadow:0 0 0 #5a9e5a;}
+  @media(max-width:520px){.add-form{grid-template-columns:1fr;}}
+
+  .table-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:20px;}
+  table.admin{width:100%;min-width:560px;border-collapse:collapse;font-size:.8rem;background:#fff;border-radius:20px;overflow:hidden;}
+  table.admin th{background:#ffd966;color:#5b3a10;padding:9px 6px;font-weight:900;font-size:.78rem;
+    position:sticky;top:0;z-index:2;white-space:nowrap;}
+  table.admin td{padding:7px 6px;border-bottom:1px solid #ffeed8;text-align:center;vertical-align:middle;}
+  table.admin tr:last-child td{border-bottom:none;}
+  table.admin .th{width:44px;height:44px;border-radius:50%;overflow:hidden;background:#ffe9c9;
+    display:flex;align-items:center;justify-content:center;font-size:1.15rem;margin:0 auto;
+    border:2px solid #fff;position:relative;}
+  table.admin .th img{width:100%;height:100%;object-fit:cover;}
+  .draft-badge{position:absolute;top:-6px;right:-14px;background:#ff5f8f;color:#fff;font-size:.55rem;
+    padding:1px 5px;border-radius:10px;font-weight:800;border:2px solid #fff;white-space:nowrap;}
+  .cell-nm{text-align:left!important;font-weight:800;color:#3d2b1f;max-width:150px;word-break:break-all;}
+  .cell-nm small{display:block;font-weight:600;color:#a08c7a;font-size:.68rem;margin-top:2px;}
+  .pill{font-size:.65rem;padding:2px 8px;border-radius:20px;background:#ffeacd;color:#8a5c14;font-weight:800;white-space:nowrap;}
+
+  .op-cell{display:flex;flex-wrap:wrap;gap:4px;justify-content:center;}
+  .mini-btn{border:none;border-radius:20px;padding:5px 10px;font-size:.68rem;font-weight:900;
+    cursor:pointer;transition:.08s;white-space:nowrap;}
+  .mini-btn.img{background:#bfe9ff;color:#1c5f85;box-shadow:0 3px 0 #7cbde0;}
+  .mini-btn.edit{background:#ffe08a;color:#7d5a0f;box-shadow:0 3px 0 #d4a93a;}
+  .mini-btn.del{background:#ffb3b3;color:#7d1f1f;box-shadow:0 3px 0 #d46a6a;}
+  .mini-btn:active{transform:translateY(3px);box-shadow:0 0 0 transparent;}
+  @media(max-width:600px){
+    .mini-btn{font-size:.64rem;padding:5px 8px;}
+    table.admin th,table.admin td{padding:7px 5px;}
+  }
+  .hint{font-size:.7rem;color:#b0937d;margin-top:10px;line-height:1.5;}
+
+  .modal{position:fixed;inset:0;background:rgba(60,30,50,.35);backdrop-filter:blur(5px);
+    display:none;align-items:center;justify-content:center;z-index:999;padding:20px;}
+  .modal.on{display:flex;}
+  .modal-box{background:#fffaf0;border:6px solid #fff;border-radius:40px;padding:28px 26px;width:100%;
+    max-width:380px;box-shadow:0 25px 60px rgba(0,0,0,.25);text-align:center;animation:pop .22s ease;
+    max-height:92vh;overflow-y:auto;}
+  @media(max-width:440px){.modal-box{padding:22px 18px;border-radius:30px;}}
+  @keyframes pop{from{transform:scale(.9);opacity:0;}to{transform:scale(1);opacity:1;}}
+  .modal-box h2{color:#ff5f8f;font-size:1.4rem;margin-bottom:16px;}
+  .modal-box input{width:100%;padding:12px 18px;margin:7px 0;border:3px solid #ffd5b0;border-radius:40px;
+    font-size:.95rem;outline:none;background:#fff;}
+  .modal-box input:focus{border-color:#ff9f1c;}
+  .modal-box label{display:block;text-align:left;font-size:.78rem;font-weight:800;color:#8a5b34;
+    margin:8px 0 0 8px;}
+  .modal-box textarea{width:100%;padding:12px 16px;margin:7px 0 0;border:3px solid #ffd5b0;
+    border-radius:20px;font-size:.92rem;outline:none;background:#fff;min-height:84px;
+    resize:vertical;font-family:inherit;line-height:1.5;}
+  .modal-box textarea:focus{border-color:#ff9f1c;}
+  .modal-actions{display:flex;gap:10px;margin-top:16px;}
+  .modal-actions button{flex:1;padding:12px;border:none;border-radius:40px;font-weight:900;font-size:.95rem;
+    cursor:pointer;transition:.08s;}
+  .modal-actions .cancel{background:#e6e0d8;color:#5e5045;box-shadow:0 4px 0 #b8b0a6;}
+  .modal-actions .ok{background:#ffb347;color:#4a2c0c;box-shadow:0 4px 0 #b57a2a;}
+  .modal-actions button:active{transform:translateY(4px);box-shadow:0 0 0 transparent;}
+
+  .settings-fab{position:fixed;left:18px;bottom:18px;z-index:800;width:56px;height:56px;border-radius:50%;
+    background:#fff;border:3px solid #ffd5b0;box-shadow:0 6px 0 #e8b98a,0 10px 20px rgba(0,0,0,.12);
+    display:flex;align-items:center;justify-content:center;font-size:1.55rem;cursor:pointer;user-select:none;
+    transition:.1s;}
+  .settings-fab:active{transform:translateY(4px);box-shadow:0 2px 0 #e8b98a;}
+  .settings-panel{position:fixed;left:18px;bottom:88px;z-index:801;width:280px;max-width:calc(100vw - 36px);
+    background:#fffaf0;border:4px solid #fff;border-radius:26px;box-shadow:0 20px 44px rgba(0,0,0,.18);
+    padding:16px 18px 14px;display:none;animation:pop .2s ease;}
+  .settings-panel.on{display:block;}
+  .settings-panel h3{font-size:1rem;color:#ff5f8f;margin-bottom:6px;}
+  .settings-panel .bgnm{font-size:.66rem;color:#a08c7a;font-weight:700;margin-bottom:12px;line-height:1.35;}
+  .set-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:10px 0;}
+  .set-row span.lb{font-size:.84rem;font-weight:800;color:#5a4536;}
+  .set-row input[type=range]{flex:1;accent-color:#ff9f1c;height:6px;cursor:pointer;max-width:120px;}
+  .switch{position:relative;display:inline-block;width:46px;height:26px;flex:none;}
+  .switch input{opacity:0;width:0;height:0;}
+  .switch .sl{position:absolute;inset:0;cursor:pointer;background:#d8cfc5;border-radius:30px;transition:.2s;
+    border:2px solid #fff;}
+  .switch .sl::before{content:'';position:absolute;width:18px;height:18px;left:2px;top:2px;background:#fff;
+    border-radius:50%;transition:.2s;box-shadow:0 2px 4px rgba(0,0,0,.2);}
+  .switch input:checked + .sl{background:#ffb347;}
+  .switch input:checked + .sl::before{transform:translateX(20px);}
+  .set-close{width:100%;margin-top:10px;border:none;border-radius:30px;padding:9px;background:#ffd966;
+    color:#5b3a10;font-weight:900;font-size:.85rem;cursor:pointer;box-shadow:0 4px 0 #b58b2a;transition:.08s;}
+  .set-close:active{transform:translateY(4px);box-shadow:0 0 0 #b58b2a;}
+
+  ::-webkit-scrollbar{width:7px;height:7px;}
+  ::-webkit-scrollbar-thumb{background:#ffbe7a;border-radius:10px;}
+  ::-webkit-scrollbar-track{background:#fff1dd;border-radius:10px;}
+</style>
+</head>
+<body>
+
+<div class="deco d1">🦸‍♂️</div>
+<div class="deco d2">⚡</div>
+<div class="deco d3">🤖</div>
+<div class="deco d4">🦖</div>
+<div class="deco d5">✨</div>
+
+<div class="app">
+  <div class="topbar">
+    <div class="logo">✧ 特摄穿越测试 ✧</div>
+    <button class="admin-entry" id="adminEntryBtn">👑 管理员</button>
+  </div>
+
+  <!-- 首页 -->
+  <div class="view active" id="homeView">
+    <div class="hero">
+      <h1>假如穿越进日本三大特摄<br>你会成为谁？</h1>
+      <div class="sub">25 道题 · 每次不同 · 测出你的英雄本色</div>
+    </div>
+    <div class="hero-actions">
+      <button class="big-btn primary" id="startBtn">🚀 开始测试</button>
+      <button class="big-btn blue" id="rosterBtn">📖 查看图鉴</button>
+    </div>
+    <div class="peek">
+      <h3><span>✨ 已收录的英雄</span><span class="more" id="peekMore">查看全部 ›</span></h3>
+      <div class="chip-wrap" id="peekWrap"></div>
+    </div>
+  </div>
+
+  <!-- 答题 -->
+  <div class="view" id="quizView">
+    <div class="quiz-top">
+      <span id="progressText">第 1 / 25 题</span>
+      <span id="typeTag">单选题</span>
+    </div>
+    <div class="bar"><i id="progressBar"></i></div>
+    <div class="q-text" id="qText">加载中…</div>
+    <div class="options" id="options"></div>
+    <div class="multi-tip" id="multiTip" style="display:none">💡 多选题：点击选项可多选，选好后点「下一题」</div>
+    <div class="nav">
+      <button class="nav-btn" id="prevBtn">◀ 上一题</button>
+      <button class="nav-btn go" id="nextBtn">下一题 ▶</button>
+    </div>
+    <button class="quiz-back" id="quizBackBtn">🏠 返回主页</button>
+  </div>
+
+  <!-- 结果 -->
+  <div class="view" id="resultView">
+    <div class="result">
+      <div class="res-img" id="resImg">🦸</div>
+      <div class="res-name" id="resName">—</div>
+      <div class="res-series" id="resSeries">—</div>
+      <div class="res-desc" id="resDesc"></div>
+      <div class="res-actions">
+        <button class="big-btn primary" id="againBtn">🔄 再测一次</button>
+        <button class="big-btn blue" id="homeBtn">🏠 返回主页</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 图鉴 -->
+  <div class="view" id="rosterView">
+    <div class="roster-head">
+      <h2>📚 全人物图鉴</h2>
+      <span class="cnt" id="rosterCount">共 0 位</span>
+      <button class="nav-btn" style="flex:none;padding:9px 20px;font-size:.9rem" id="rosterBack">返回</button>
+    </div>
+    <div class="grid" id="rosterGrid"></div>
+  </div>
+
+  <!-- 管理员 -->
+  <div class="view" id="adminView">
+    <div class="admin-box">
+      <div class="admin-head">
+        <h2>👑 角色数据库管理</h2>
+        <div class="head-btns">
+          <button class="save-img-btn" id="saveImgBtn">💾 保存图片修改</button>
+          <button class="nav-btn" style="flex:none;padding:9px 18px;font-size:.86rem" id="adminLogout">退出</button>
+        </div>
+      </div>
+      <div class="add-form">
+        <input type="text" id="newName" placeholder="角色名（必填）">
+        <input type="text" id="newSeries" placeholder="系列（奥特曼/假面骑士/超级战队）">
+        <input type="text" id="newTag" placeholder="标签/备注（选填）" style="grid-column:1/-1">
+        <div class="file-line">
+          <span>🖼️ 图片：</span>
+          <input type="file" id="newImgFile" accept="image/png,image/jpeg,image/webp,image/gif">
+          <span id="newImgState" style="color:#2e8b57">未选择</span>
+        </div>
+        <div class="add-row">
+          <button id="addBtn">➕ 添加角色</button>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="admin">
+          <thead><tr><th>图</th><th>角色</th><th>系列</th><th>操作</th></tr></thead>
+          <tbody id="adminTbody"></tbody>
+        </table>
+      </div>
+      <div class="hint">
+        💡 点击「图片」选择本地文件后，表格会显示预览和 <b>待保存</b> 徽章，确认后点击 <b>💾 保存图片修改</b> 才会正式更新。<br>
+        ✏️ 点击「编辑」可修改角色姓名、系列与人物介绍，保存后立即生效。<br>
+        ⚠️ 数据保存在浏览器 localStorage，清理缓存会丢失。
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 设置 -->
+<div class="settings-fab" id="settingsFab">⚙️</div>
+<div class="settings-panel" id="settingsPanel">
+  <h3>🔊 声音设置</h3>
+  <div class="bgnm">BGM：P.A.R.T.Y.～ユニバース·フェスティバル～（电子合成版）</div>
+  <div class="set-row"><span class="lb">背景音乐</span>
+    <label class="switch"><input type="checkbox" id="bgmToggle" checked><span class="sl"></span></label></div>
+  <div class="set-row"><span class="lb">音量</span><input type="range" id="bgmVol" min="0" max="100" value="35"></div>
+  <div class="set-row"><span class="lb">电子音效</span>
+    <label class="switch"><input type="checkbox" id="sfxToggle" checked><span class="sl"></span></label></div>
+  <div class="set-row"><span class="lb">音量</span><input type="range" id="sfxVol" min="0" max="100" value="60"></div>
+  <button class="set-close" id="setClose">关闭</button>
+</div>
+
+<!-- 登录（已移除预填账号密码，玩家无法直接看到凭证） -->
+<div class="modal" id="loginModal">
+  <div class="modal-box">
+    <h2>🔐 管理员登录</h2>
+    <input type="text" id="admUser" placeholder="管理员账号" autocomplete="off" autocapitalize="off" spellcheck="false">
+    <input type="password" id="admPass" placeholder="管理员密码" autocomplete="off">
+    <div class="modal-actions">
+      <button class="cancel" id="loginCancel">取消</button>
+      <button class="ok" id="loginOk">登录</button>
+    </div>
+  </div>
+</div>
+
+<!-- ⭐ 编辑角色弹窗 -->
+<div class="modal" id="editModal">
+  <div class="modal-box">
+    <h2>✏️ 编辑角色</h2>
+    <label>角色名</label>
+    <input type="text" id="editName" placeholder="角色名" maxlength="40">
+    <label>系列</label>
+    <input type="text" id="editSeries" placeholder="奥特曼 / 假面骑士 / 超级战队" maxlength="20">
+    <label>人物介绍 / 备注</label>
+    <textarea id="editTag" placeholder="人物介绍、代表作、性格特征等" maxlength="300"></textarea>
+    <div class="modal-actions">
+      <button class="cancel" id="editCancel">取消</button>
+      <button class="ok" id="editSave">保存</button>
+    </div>
+  </div>
+</div>
+
+<input type="file" id="hiddenFile" accept="image/png,image/jpeg,image/webp,image/gif" style="display:none">
+
+<script>
+(function(){
+'use strict';
+
+/* ============================================================
+   1. 角色数据库（134 位）
+   ============================================================ */
+var DEFAULT_CHARS = [
+  /* 奥特曼 41 */
+  {name:"佐菲",series:"奥特曼",tag:"宇宙警备队队长·M87光线最强"},
+  {name:"初代奥特曼",series:"奥特曼",tag:"首位来地球·斯派修姆光线"},
+  {name:"赛文·奥特曼",series:"奥特曼",tag:"恒星观测员·头镖·赛罗之父"},
+  {name:"杰克·奥特曼",series:"奥特曼",tag:"归来的奥特曼·昭和第二作"},
+  {name:"艾斯·奥特曼",series:"奥特曼",tag:"光线技与光线切裂"},
+  {name:"泰罗·奥特曼",series:"奥特曼",tag:"奥特之父与奥特之母之子·太子"},
+  {name:"雷欧·奥特曼",series:"奥特曼",tag:"L77星云·格斗王"},
+  {name:"阿斯特拉",series:"奥特曼",tag:"雷欧之弟·L77星云"},
+  {name:"爱迪·奥特曼",series:"奥特曼",tag:"学校教师身份潜伏地球"},
+  {name:"尤莉安",series:"奥特曼",tag:"奥特之母同族·女性奥特曼"},
+  {name:"奥特之父",series:"奥特曼",tag:"宇宙警备队大队长"},
+  {name:"奥特之母",series:"奥特曼",tag:"银十字军队长·医疗担当"},
+  {name:"奥特之王",series:"奥特曼",tag:"奥特一族的王者·神秘老人"},
+  {name:"葛雷",series:"奥特曼",tag:"澳大利亚海外版"},
+  {name:"帕瓦特",series:"奥特曼",tag:"美国海外版"},
+  {name:"迪迦·奥特曼",series:"奥特曼",tag:"平成第一位·三形态转换"},
+  {name:"戴拿·奥特曼",series:"奥特曼",tag:"迪迦世界观续作"},
+  {name:"盖亚·奥特曼",series:"奥特曼",tag:"大地之光·地球本土"},
+  {name:"阿古茹·奥特曼",series:"奥特曼",tag:"海洋之光·与盖亚双雄"},
+  {name:"高斯·奥特曼",series:"奥特曼",tag:"慈爱战士·温柔派"},
+  {name:"杰斯提斯·奥特曼",series:"奥特曼",tag:"高斯剧场版·正义战士"},
+  {name:"奈克瑟斯·奥特曼",series:"奥特曼",tag:"多名人间体·成人向"},
+  {name:"麦克斯·奥特曼",series:"奥特曼",tag:"主打最快最强"},
+  {name:"梦比优斯·奥特曼",series:"奥特曼",tag:"回归昭和风格"},
+  {name:"希卡利·奥特曼",series:"奥特曼",tag:"蓝族剑士·猎手骑士剑"},
+  {name:"赛罗·奥特曼",series:"奥特曼",tag:"赛文之子·超人气"},
+  {name:"银河·奥特曼",series:"奥特曼",tag:"新生代开山之作"},
+  {name:"维克特利·奥特曼",series:"奥特曼",tag:"地底居民·与银河搭档"},
+  {name:"艾克斯·奥特曼",series:"奥特曼",tag:"与终端机器人搭档"},
+  {name:"欧布·奥特曼",series:"奥特曼",tag:"融合之力·集历代之力"},
+  {name:"捷德·奥特曼",series:"奥特曼",tag:"贝利亚之子"},
+  {name:"罗索·奥特曼",series:"奥特曼",tag:"火焰之力·与布鲁兄弟"},
+  {name:"布鲁·奥特曼",series:"奥特曼",tag:"水流之力·罗索之弟"},
+  {name:"泰迦·奥特曼",series:"奥特曼",tag:"泰罗之子"},
+  {name:"泽塔·奥特曼",series:"奥特曼",tag:"赛罗徒弟·德尔塔天爪"},
+  {name:"特利迦·奥特曼",series:"奥特曼",tag:"令和迪迦"},
+  {name:"德凯·奥特曼",series:"奥特曼",tag:"特利迦世界观续作"},
+  {name:"布莱泽·奥特曼",series:"奥特曼",tag:"首个队长人间体"},
+  {name:"亚刻·奥特曼",series:"奥特曼",tag:"想象力之力·2024"},
+  {name:"奥美迦·奥特曼",series:"奥特曼",tag:"最新作2025·红黑配色"},
+  {name:"提欧奥特曼",series:"奥特曼",tag:"2026"},
+  /* 假面骑士 43 */
+  {name:"假面骑士1号",series:"假面骑士",tag:"特摄骑士原点·蝗虫改造人"},
+  {name:"假面骑士2号",series:"假面骑士",tag:"与1号并肩作战"},
+  {name:"假面骑士V3",series:"假面骑士",tag:"1号2号的继承者"},
+  {name:"骑士人",series:"假面骑士",tag:"带机械臂的改造人"},
+  {name:"假面骑士X",series:"假面骑士",tag:"深海改造人"},
+  {name:"假面骑士亚马逊",series:"假面骑士",tag:"野性风格"},
+  {name:"假面骑士强人",series:"假面骑士",tag:"雷电之力"},
+  {name:"天空骑士",series:"假面骑士",tag:"会飞行的骑士"},
+  {name:"假面骑士Super1",series:"假面骑士",tag:"宇宙功夫"},
+  {name:"假面骑士ZX",series:"假面骑士",tag:"十人之一·忍者骑士"},
+  {name:"假面骑士Black",series:"假面骑士",tag:"世纪末骑士·经典之作"},
+  {name:"假面骑士Black RX",series:"假面骑士",tag:"Black的进化形态"},
+  {name:"真·假面骑士",series:"假面骑士",tag:"剧场版"},
+  {name:"假面骑士ZO",series:"假面骑士",tag:"剧场版"},
+  {name:"假面骑士J",series:"假面骑士",tag:"剧场版"},
+  {name:"假面骑士空我",series:"假面骑士",tag:"平成第一位·微笑战士"},
+  {name:"假面骑士AgitΩ",series:"假面骑士",tag:"进化之力"},
+  {name:"假面骑士龙骑",series:"假面骑士",tag:"骑士大战·镜世界"},
+  {name:"假面骑士Faiz",series:"假面骑士",tag:"腰带设计·经典"},
+  {name:"假面骑士剑",series:"假面骑士",tag:"卡牌战斗"},
+  {name:"假面骑士响鬼",series:"假面骑士",tag:"鬼之战士·音击"},
+  {name:"假面骑士甲斗王",series:"假面骑士",tag:"天之道"},
+  {name:"假面骑士电王",series:"假面骑士",tag:"列车·异魔神附体"},
+  {name:"假面骑士Kiva",series:"假面骑士",tag:"吸血鬼主题"},
+  {name:"假面骑士Decade",series:"假面骑士",tag:"连接平行世界骑士"},
+  {name:"假面骑士W",series:"假面骑士",tag:"双人一体的侦探骑士"},
+  {name:"假面骑士OOO",series:"假面骑士",tag:"硬币变换·核心硬币"},
+  {name:"假面骑士Fourze",series:"假面骑士",tag:"宇宙高中生"},
+  {name:"假面骑士Wizard",series:"假面骑士",tag:"魔法使"},
+  {name:"假面骑士铠武",series:"假面骑士",tag:"水果装甲·锁种"},
+  {name:"假面骑士Drive",series:"假面骑士",tag:"车与刑警"},
+  {name:"假面骑士Ghost",series:"假面骑士",tag:"眼魂·幽灵骑士"},
+  {name:"假面骑士Ex-Aid",series:"假面骑士",tag:"医生骑士·游戏病"},
+  {name:"假面骑士Build",series:"假面骑士",tag:"物理学家·最佳组合"},
+  {name:"假面骑士时王",series:"假面骑士",tag:"平成终结作·历代王者"},
+  {name:"假面骑士零一",series:"假面骑士",tag:"令和第一位·AI时代"},
+  {name:"假面骑士圣刃",series:"假面骑士",tag:"剑与书·奇幻世界"},
+  {name:"假面骑士利维斯",series:"假面骑士",tag:"50周年纪念·恶魔附体"},
+  {name:"假面骑士极狐",series:"假面骑士",tag:"欲望大奖赛"},
+  {name:"假面骑士歌查德",series:"假面骑士",tag:"卡牌炼金·凯米"},
+  {name:"假面骑士加布",series:"假面骑士",tag:"零食变身·甜点主题"},
+  {name:"假面骑士ZZZ",series:"假面骑士",tag:"2025"},
+  {name:"假面骑士MYTH",series:"假面骑士",tag:"2026"},
+  /* 超级战队 50 */
+  {name:"秘密战队五连者",series:"超级战队",tag:"赤连者·战队系列原点"},
+  {name:"JAKQ电击队",series:"超级战队",tag:"赤Joker"},
+  {name:"战斗狂热J",series:"超级战队",tag:"战斗法国"},
+  {name:"电子战队电磁人",series:"超级战队",tag:"赤间一郎"},
+  {name:"太阳战队太阳火神",series:"超级战队",tag:"火神鹰"},
+  {name:"大战队风镜V",series:"超级战队",tag:"赤猎鹰"},
+  {name:"科学战队炸药人",series:"超级战队",tag:"炸药红"},
+  {name:"超电子生化人",series:"超级战队",tag:"红一号"},
+  {name:"电击战队变化人",series:"超级战队",tag:"变化龙"},
+  {name:"超新星闪光人",series:"超级战队",tag:"红闪光"},
+  {name:"光战队覆盖人",series:"超级战队",tag:"红覆盖"},
+  {name:"超兽战队生命人",series:"超级战队",tag:"红隼"},
+  {name:"高速战队涡轮连者",series:"超级战队",tag:"红涡轮"},
+  {name:"地球战队五人组",series:"超级战队",tag:"Five Red"},
+  {name:"鸟人战队喷射人",series:"超级战队",tag:"红鹰·人气名作"},
+  {name:"恐龙战队兽连者",series:"超级战队",tag:"霸王龙连者·美版原型"},
+  {name:"五星战队大连者",series:"超级战队",tag:"龙连者·中国元素"},
+  {name:"忍者战队隐连者",series:"超级战队",tag:"红忍者"},
+  {name:"超力战队王连者",series:"超级战队",tag:"王红"},
+  {name:"激走战队车连者",series:"超级战队",tag:"红车手·赛车主题"},
+  {name:"电磁战队百万连者",series:"超级战队",tag:"红百万"},
+  {name:"星兽战队银河人",series:"超级战队",tag:"银河红·宇宙星兽"},
+  {name:"救急战队GOGO V",series:"超级战队",tag:"GoRed·消防急救"},
+  {name:"未来战队时连者",series:"超级战队",tag:"时间红·时空刑警"},
+  {name:"百兽战队牙吠连者",series:"超级战队",tag:"牙吠红·百兽之力"},
+  {name:"忍风战队破里剑者",series:"超级战队",tag:"赤忍者"},
+  {name:"爆龙战队暴连者",series:"超级战队",tag:"暴连红·恐龙机械"},
+  {name:"特搜战队刑事连者",series:"超级战队",tag:"刑事红·刑警主题"},
+  {name:"魔法战队魔法连者",series:"超级战队",tag:"魔法红·魔法家族"},
+  {name:"轰轰战队冒险者",series:"超级战队",tag:"冒险红·寻宝冒险"},
+  {name:"兽拳战队激气连者",series:"超级战队",tag:"激气红·功夫拳法"},
+  {name:"炎神战队轰音者",series:"超级战队",tag:"轰音红·炎神引擎"},
+  {name:"侍战队真剑者",series:"超级战队",tag:"真剑红·武士主题"},
+  {name:"天装战队护星者",series:"超级战队",tag:"护星红"},
+  {name:"海贼战队豪快者",series:"超级战队",tag:"豪快红·35周年纪念"},
+  {name:"特命战队Go-Busters",series:"超级战队",tag:"Red Buster·特工机器人"},
+  {name:"兽电战队强龙者",series:"超级战队",tag:"强龙红·恐龙主题"},
+  {name:"烈车战队特急者",series:"超级战队",tag:"特急1号·列车主题"},
+  {name:"手裏剑战队忍忍者",series:"超级战队",tag:"赤忍者·忍者主题"},
+  {name:"动物战队兽王者",series:"超级战队",tag:"兽王红·动物拼图"},
+  {name:"宇宙战队九连者",series:"超级战队",tag:"狮子红·宇宙刑警"},
+  {name:"快盗战队鲁邦连者VS警察战队巡逻连者",series:"超级战队",tag:"鲁邦红／巡逻1号·双战队对决"},
+  {name:"骑士龙战队龙装者",series:"超级战队",tag:"龙装红·骑士龙合体"},
+  {name:"魔进战队煌辉者",series:"超级战队",tag:"煌辉红·宝石光芒"},
+  {name:"机界战队全界者",series:"超级战队",tag:"全开红·45周年纪念"},
+  {name:"暴太郎战队咚兄弟",series:"超级战队",tag:"咚桃太郎·桃太郎童话"},
+  {name:"王样战队帝王者",series:"超级战队",tag:"王者红·王者昆虫"},
+  {name:"爆上战队奔奔者",series:"超级战队",tag:"奔奔红·赛车送货"},
+  {name:"头号战队豪兽者",series:"超级战队",tag:"豪兽红·第49部最新作"},
+  {name:"非公认战队秋叶原连者",series:"超级战队",tag:"非公认"}
+];
+
+/* ============================================================
+   2. 题库（单选22 / 多选10 / 对错22）
+   ============================================================ */
+var SINGLE_BANK = [
+  {q:'放学路上，突然有怪人从地底钻出来袭击行人，你的第一反应是——',
+   opts:[
+     {t:'毫不犹豫冲上去，先挡在路人前面！',w:{热血:3,勇敢:3}},
+     {t:'先观察它的动作，寻找弱点再出手',w:{冷静:3,智慧:3}},
+     {t:'大声呼喊吸引注意，组织大家一起应对',w:{领导:3,正义:2}},
+     {t:'先把周围的小孩疏散到安全地带',w:{责任:3,温柔:2}}
+   ]},
+  {q:'如果只能选一种特摄能力，你最想要——',
+   opts:[
+     {t:'超强格斗术＋火焰之力',w:{热血:2,格斗:3}},
+     {t:'治愈他人、让伤口消失的温柔之光',w:{温柔:3,慈爱:3}},
+     {t:'看穿一切谎言与阴谋的智慧之眼',w:{智慧:3,冷静:2}},
+     {t:'变成任何人的伪装能力',w:{神秘:2,灵活:2}}
+   ]},
+  {q:'在战队里，你通常是那个——',
+   opts:[
+     {t:'冲在最前面、喊着口号的先锋',w:{勇敢:3,热血:2}},
+     {t:'制定战术、冷静指挥的军师',w:{智慧:3,冷静:2}},
+     {t:'调和矛盾、把大家凝聚在一起的核心',w:{温柔:3,领导:2}},
+     {t:'独来独往、但关键时刻一锤定音的独行侠',w:{独立:3,实力:2}}
+   ]},
+  {q:'你最喜欢哪一句特摄台词？',
+   opts:[
+     {t:'“我要守护大家的笑容！”',w:{热血:3,正义:3}},
+     {t:'“真相只有一个。”',w:{智慧:3,理性:2}},
+     {t:'“只要还有生命，我就会继续战斗。”',w:{坚韧:3,慈爱:2}},
+     {t:'“这个世界，由我来改变。”',w:{自信:3,领导:2}}
+   ]},
+  {q:'一个曾经的敌人跪在你面前说想重新做人，你会——',
+   opts:[
+     {t:'立刻扶他起来，给他一个拥抱',w:{温柔:3,慈爱:3}},
+     {t:'保持警惕，但愿意给他一次机会',w:{理性:3,谨慎:2}},
+     {t:'让他用行动证明，自己暗中观察',w:{冷静:3,智慧:2}},
+     {t:'绝不原谅，敌人就是敌人',w:{果断:3,实力:2}}
+   ]},
+  {q:'你的战斗风格最接近——',
+   opts:[
+     {t:'正面硬刚，用气势把对手压垮',w:{热血:3,格斗:3}},
+     {t:'灵活走位，利用地形和道具打出花样',w:{智慧:3,灵活:2}},
+     {t:'保护队友优先，辅助与控制拉满',w:{温柔:3,团队:2}},
+     {t:'找准破绽，一击必杀追求效率',w:{果断:3,实力:2}}
+   ]},
+  {q:'如果让你挑一个并肩作战的搭档，你最看重——',
+   opts:[
+     {t:'热血的斗志和永不放弃的心',w:{热血:3,勇敢:2}},
+     {t:'聪明的头脑和冷静的判断',w:{智慧:3,冷静:3}},
+     {t:'善良的内心和治愈的能力',w:{温柔:3,慈爱:2}},
+     {t:'绝对的实力和可靠的身手',w:{实力:3,果断:2}}
+   ]},
+  {q:'难得的休息日，你最可能出现在——',
+   opts:[
+     {t:'道场或健身房，挥汗如雨地训练',w:{格斗:3,热血:2}},
+     {t:'图书馆或实验室，钻研感兴趣的东西',w:{智慧:3,理性:2}},
+     {t:'和朋友聚会，顺便照顾一下身边的人',w:{温柔:3,社交:2}},
+     {t:'一个人背上包去没去过的地方',w:{独立:3,神秘:2}}
+   ]},
+  {q:'你怎么理解“力量”？',
+   opts:[
+     {t:'力量就是为了保护比自己弱小的人',w:{正义:3,温柔:2}},
+     {t:'力量是达成目标最直接的工具',w:{理性:3,果断:2}},
+     {t:'力量是责任，越强责任越大',w:{领导:3,责任:2}},
+     {t:'力量本身没有对错，关键看使用者',w:{智慧:3,冷静:2}}
+   ]},
+  {q:'好朋友突然说“我可能不适合当英雄”，你会——',
+   opts:[
+     {t:'拍他肩膀：“我相信你，你一定行！”',w:{热血:3,温柔:2}},
+     {t:'帮他一条条分析问题，找出解决办法',w:{智慧:3,理性:2}},
+     {t:'默默陪着他，需要的时候递上一杯热奶茶',w:{温柔:3,慈爱:2}},
+     {t:'故意激他：“这就放弃了？不像你啊。”',w:{果断:3,热血:2}}
+   ]},
+  {q:'变身后能量只剩最后一分钟，你会——',
+   opts:[
+     {t:'爆发全部力量，把必杀技一次打出去',w:{热血:3,勇敢:2}},
+     {t:'冷静判断，找对手最脆弱的时机',w:{冷静:3,智慧:3}},
+     {t:'先保护周围人撤离，再想下一步',w:{温柔:3,责任:2}},
+     {t:'用假动作骗对手，巧妙取胜',w:{灵活:3,智慧:2}}
+   ]},
+  {q:'秘密身份不小心被好朋友发现了，你会——',
+   opts:[
+     {t:'大方承认，邀请他一起并肩作战',w:{坦率:3,团队:2}},
+     {t:'请他保密，但之后暗中保护他',w:{谨慎:3,温柔:2}},
+     {t:'编个理由搪塞过去，尽量避免牵连',w:{理性:3,独立:2}},
+     {t:'反而利用这件事锻炼他的胆量',w:{领导:3,责任:2}}
+   ]},
+  {q:'上班/上学快迟到了，前方路口却出现了怪人，你会——',
+   opts:[
+     {t:'迟到就迟到，先变身打怪！',w:{热血:3,正义:3}},
+     {t:'打电话报备一下，再从容解决',w:{理性:3,冷静:2}},
+     {t:'找最近的小巷变身，争取两边都顾上',w:{灵活:3,责任:2}},
+     {t:'先找周围能帮忙的人组成临时小队',w:{领导:3,团队:2}}
+   ]},
+  {q:'拿到一件全新的变身道具，你第一件事是——',
+   opts:[
+     {t:'马上试用，越强越好！',w:{热血:3,勇敢:2}},
+     {t:'先读说明书，搞清楚使用方法',w:{智慧:3,谨慎:2}},
+     {t:'研究它的上限，测试各种组合',w:{智慧:3,实力:2}},
+     {t:'找伙伴一起研究，集思广益',w:{团队:3,温柔:2}}
+   ]},
+  {q:'队友被敌人控制了心智，你会——',
+   opts:[
+     {t:'冲上去打醒他，相信他能挣脱',w:{热血:3,勇敢:2}},
+     {t:'想办法破解控制，找出幕后黑手',w:{智慧:3,冷静:2}},
+     {t:'先保护他不受其他伤害，慢慢唤醒他',w:{温柔:3,慈爱:2}},
+     {t:'假装被控制，反将敌人一军',w:{灵活:3,智慧:2}}
+   ]},
+  {q:'决战前夜，你通常——',
+   opts:[
+     {t:'兴奋得睡不着，恨不得立刻天亮',w:{热血:3,勇敢:2}},
+     {t:'仔细复盘每一场战斗，找出不足',w:{智慧:3,理性:2}},
+     {t:'给家人和伙伴写一封信',w:{温柔:3,慈爱:2}},
+     {t:'一个人静静地看星星，什么也不想',w:{独立:3,神秘:2}}
+   ]},
+  {q:'如果你能拥有“读心术”，你会——',
+   opts:[
+     {t:'用来理解敌人为什么而战',w:{智慧:3,温柔:2}},
+     {t:'帮助伙伴解开心结',w:{温柔:3,慈爱:2}},
+     {t:'找出隐藏的背叛者',w:{冷静:3,理性:2}},
+     {t:'当作秘密武器，关键时刻才用',w:{神秘:3,独立:2}}
+   ]},
+  {q:'被推举为战队队长，你的第一反应是——',
+   opts:[
+     {t:'“交给我吧！大家跟我上！”',w:{热血:3,领导:3}},
+     {t:'“我需要先了解每个人的强项。”',w:{智慧:3,责任:2}},
+     {t:'“我会尽全力保护每一个队员。”',w:{温柔:3,责任:2}},
+     {t:'“队长不是指挥，而是最后倒下的那个。”',w:{责任:3,正义:2}}
+   ]},
+  {q:'面对一个实力远超自己的敌人，你会——',
+   opts:[
+     {t:'正面迎战，越强越兴奋',w:{热血:3,勇敢:3}},
+     {t:'先撤退，研究对手弱点再来',w:{冷静:3,智慧:3}},
+     {t:'联合所有伙伴的力量一起上',w:{团队:3,领导:2}},
+     {t:'用自己的方式守护重要的人',w:{温柔:3,责任:2}}
+   ]},
+  {q:'队伍里两个核心成员吵得不可开交，你会——',
+   opts:[
+     {t:'大声喊停：“现在不是吵架的时候！”',w:{热血:3,领导:2}},
+     {t:'分开单独聊，找到矛盾的根源',w:{智慧:3,冷静:2}},
+     {t:'先让他们各自冷静，再一起吃顿饭',w:{温柔:3,慈爱:2}},
+     {t:'不管他们，自己先把任务做完',w:{独立:3,果断:2}}
+   ]},
+  {q:'你最不希望自己成为哪种英雄？',
+   opts:[
+     {t:'为了胜利牺牲同伴的人',w:{温柔:3,正义:2}},
+     {t:'只靠蛮力不动脑子的人',w:{智慧:3,冷静:2}},
+     {t:'被人崇拜却迷失自我的人',w:{独立:3,理性:2}},
+     {t:'永远一个人扛下所有痛苦的人',w:{团队:3,温柔:2}}
+   ]},
+  {q:'如果可以给世界留下一样东西，你希望是——',
+   opts:[
+     {t:'永不熄灭的希望之火',w:{正义:3,热血:3}},
+     {t:'让所有人都能幸福的方法',w:{智慧:3,温柔:2}},
+     {t:'一个大家都能并肩的未来',w:{团队:3,领导:2}},
+     {t:'一段属于自己的传说',w:{自信:3,独立:2}}
+   ]}
+];
+
+var MULTI_BANK = [
+  {q:'【多选】下面哪些特质在你身上比较明显？',
+   opts:[
+     {t:'正义感爆棚，看到不公就想出手',w:{正义:2,热血:1}},
+     {t:'温柔体贴，总能注意到别人的情绪',w:{温柔:2,慈爱:1}},
+     {t:'冷静理智，很少被情绪左右',w:{冷静:2,智慧:1}},
+     {t:'领导力强，天然有号召力',w:{领导:2,责任:1}},
+     {t:'神秘寡言，不爱解释太多',w:{神秘:2,独立:1}},
+     {t:'热血上头，行动永远快过思考',w:{热血:2,勇敢:1}}
+   ]},
+  {q:'【多选】你最欣赏特摄英雄的哪些品质？',
+   opts:[
+     {t:'为了他人可以牺牲自己',w:{慈爱:2,正义:1}},
+     {t:'永不言弃的斗志',w:{热血:2,坚韧:1}},
+     {t:'用智慧解决别人解决不了的难题',w:{智慧:2,冷静:1}},
+     {t:'独当一面的强大',w:{独立:2,实力:1}},
+     {t:'团结伙伴、一起变强',w:{团队:2,领导:1}}
+   ]},
+  {q:'【多选】如果让你组建一支战队，你会招募——',
+   opts:[
+     {t:'冲锋陷阵、永远第一个上的勇士',w:{热血:2,勇敢:1}},
+     {t:'能在白板上画出完美战术的分析师',w:{智慧:2,冷静:1}},
+     {t:'总在后方默默支援的治愈系',w:{温柔:2,慈爱:1}},
+     {t:'一个人能打十个的独行强者',w:{独立:2,实力:1}},
+     {t:'能把所有人拧成一股绳的可靠队长',w:{领导:2,责任:1}}
+   ]},
+  {q:'【多选】哪种剧情最容易让你破防？',
+   opts:[
+     {t:'主角拼尽全力只为守护大家的微笑',w:{正义:2,温柔:1}},
+     {t:'伙伴之间生死与共的羁绊',w:{团队:2,热血:1}},
+     {t:'反派背后的悲情过去与救赎',w:{智慧:1,温柔:2}},
+     {t:'绝境之中爆发逆转的成长',w:{热血:2,坚韧:1}},
+     {t:'独自背负一切、不为人知的孤独英雄',w:{独立:2,坚韧:1}}
+   ]},
+  {q:'【多选】如果把自己比作动物，你觉得自己像——',
+   opts:[
+     {t:'狮子——勇敢的领导者',w:{领导:2,勇敢:1}},
+     {t:'猫头鹰——智慧的观察者',w:{智慧:2,冷静:1}},
+     {t:'狗狗——忠诚的伙伴',w:{温柔:2,团队:1}},
+     {t:'狼——独立的猎手',w:{独立:2,实力:1}},
+     {t:'狐狸——灵活的小智将',w:{灵活:2,智慧:1}}
+   ]},
+  {q:'【多选】你最喜欢的特摄元素是——',
+   opts:[
+     {t:'炫酷的变身画面',w:{热血:2,自信:1}},
+     {t:'燃爆的必杀技',w:{实力:2,热血:1}},
+     {t:'战队之间的配合',w:{团队:2,领导:1}},
+     {t:'感人的人物塑造',w:{温柔:2,慈爱:1}},
+     {t:'充满谜团的反派设定',w:{神秘:2,智慧:1}}
+   ]},
+  {q:'【多选】你更欣赏哪种反派？',
+   opts:[
+     {t:'有信念、有原则的对手',w:{正义:2,智慧:1}},
+     {t:'强大到令人绝望的怪物',w:{实力:2,勇敢:1}},
+     {t:'背后有悲剧过去的棋子',w:{温柔:2,慈爱:1}},
+     {t:'手段狡猾的智力型反派',w:{智慧:2,冷静:1}},
+     {t:'目的明确、效率至上的管理者',w:{理性:2,果断:1}}
+   ]},
+  {q:'【多选】变身瞬间，你最喜欢哪种感觉？',
+   opts:[
+     {t:'全身充满力量，热血沸腾',w:{热血:2,实力:1}},
+     {t:'与伙伴一起并肩喊出口号',w:{团队:2,领导:1}},
+     {t:'隐藏在暗处，关键时刻登场',w:{神秘:2,独立:1}},
+     {t:'用智慧破解困局后的逆转',w:{智慧:2,冷静:1}}
+   ]},
+  {q:'【多选】你最喜欢的战斗场景是——',
+   opts:[
+     {t:'拳拳到肉的格斗肉搏',w:{热血:2,格斗:1}},
+     {t:'用计谋反杀强敌',w:{智慧:2,冷静:1}},
+     {t:'队友掩护下的完美配合',w:{团队:2,领导:1}},
+     {t:'为了守护重要之人的爆发',w:{温柔:2,正义:1}},
+     {t:'以弱胜强的绝境逆转',w:{坚韧:2,勇敢:1}}
+   ]},
+  {q:'【多选】你最想要哪种伙伴？',
+   opts:[
+     {t:'热血但永远信任你的搭档',w:{热血:2,团队:1}},
+     {t:'冷静可靠、随时补位的军师',w:{智慧:2,冷静:1}},
+     {t:'温柔体贴、默默支持的后盾',w:{温柔:2,慈爱:1}},
+     {t:'实力强劲、话少但靠谱的猛将',w:{实力:2,独立:1}},
+     {t:'阳光开朗、能带动整个团队气氛的人',w:{领导:2,社交:1}}
+   ]}
+];
+
+var BOOL_BANK = [
+  {q:'你相信“只要有光，就一定能战胜黑暗”。',
+   opts:[{t:'✅ 对',w:{正义:2,热血:1}},{t:'❌ 错',w:{理性:2,冷静:1}}]},
+  {q:'遇到困难时，你更倾向于自己扛，而不是开口求助。',
+   opts:[{t:'✅ 对',w:{独立:2,坚韧:1}},{t:'❌ 错',w:{团队:2,温柔:1}}]},
+  {q:'你认为“温柔”本身也是一种强大的力量。',
+   opts:[{t:'✅ 对',w:{温柔:2,慈爱:1}},{t:'❌ 错',w:{实力:2,果断:1}}]},
+  {q:'战斗中，你会优先保护队友，而不是先击败敌人。',
+   opts:[{t:'✅ 对',w:{温柔:2,团队:1}},{t:'❌ 错',w:{果断:2,实力:1}}]},
+  {q:'你行动前，通常会先在心里过一遍详细计划。',
+   opts:[{t:'✅ 对',w:{智慧:2,冷静:1}},{t:'❌ 错',w:{热血:2,勇敢:1}}]},
+  {q:'你很容易被感人的故事打动到眼眶发热。',
+   opts:[{t:'✅ 对',w:{温柔:2,慈爱:1}},{t:'❌ 错',w:{冷静:2,理性:1}}]},
+  {q:'你觉得“英雄”必须要有超能力才行。',
+   opts:[{t:'✅ 对',w:{实力:2,热血:1}},{t:'❌ 错',w:{智慧:2,正义:1}}]},
+  {q:'为了一个完全不认识的陌生人，你愿意冒一次险。',
+   opts:[{t:'✅ 对',w:{正义:2,勇敢:1}},{t:'❌ 错',w:{理性:2,谨慎:1}}]},
+  {q:'你认为反派身上也有值得同情的一面。',
+   opts:[{t:'✅ 对',w:{温柔:2,智慧:1}},{t:'❌ 错',w:{果断:2,正义:1}}]},
+  {q:'比起团队合作，你更崇拜“孤胆英雄”。',
+   opts:[{t:'✅ 对',w:{独立:2,实力:1}},{t:'❌ 错',w:{团队:2,领导:1}}]},
+  {q:'你觉得失败过的人，更有资格成为英雄。',
+   opts:[{t:'✅ 对',w:{坚韧:2,温柔:1}},{t:'❌ 错',w:{实力:2,自信:1}}]},
+  {q:'面对不公，即使明知会输，你也会站出来。',
+   opts:[{t:'✅ 对',w:{正义:2,勇敢:1}},{t:'❌ 错',w:{理性:2,谨慎:1}}]},
+  {q:'你相信伙伴之间的羁绊能创造奇迹。',
+   opts:[{t:'✅ 对',w:{团队:2,热血:1}},{t:'❌ 错',w:{独立:2,冷静:1}}]},
+  {q:'你经常在深夜一个人思考人生。',
+   opts:[{t:'✅ 对',w:{独立:2,神秘:1}},{t:'❌ 错',w:{社交:2,热血:1}}]},
+  {q:'如果成为英雄必须隐姓埋名，你愿意接受。',
+   opts:[{t:'✅ 对',w:{责任:2,独立:1}},{t:'❌ 错',w:{自信:2,领导:1}}]},
+  {q:'你更相信“实力决定一切”而不是“信念创造奇迹”。',
+   opts:[{t:'✅ 对',w:{实力:2,理性:1}},{t:'❌ 错',w:{热血:2,正义:1}}]},
+  {q:'你能在很短时间内和陌生人打成一片。',
+   opts:[{t:'✅ 对',w:{社交:2,领导:1}},{t:'❌ 错',w:{独立:2,神秘:1}}]},
+  {q:'你觉得“不能保护身边人”的胜利没有意义。',
+   opts:[{t:'✅ 对',w:{温柔:2,责任:1}},{t:'❌ 错',w:{果断:2,实力:1}}]},
+  {q:'你有一个从未告诉过任何人的梦想。',
+   opts:[{t:'✅ 对',w:{神秘:2,独立:1}},{t:'❌ 错',w:{坦率:2,团队:1}}]},
+  {q:'你觉得真正的英雄，不需要别人认可。',
+   opts:[{t:'✅ 对',w:{独立:2,自信:1}},{t:'❌ 错',w:{领导:2,团队:1}}]},
+  {q:'如果可以选择，你更愿意当“被记住的英雄”而不是“无名的守护者”。',
+   opts:[{t:'✅ 对',w:{自信:2,领导:1}},{t:'❌ 错',w:{责任:2,温柔:1}}]},
+  {q:'你相信任何人都有改过自新的可能。',
+   opts:[{t:'✅ 对',w:{温柔:2,慈爱:1}},{t:'❌ 错',w:{果断:2,正义:1}}]}
+];
+
+/* ============================================================
+   3. 结果匹配池
+   ============================================================ */
+var MATCH_POOL = [
+  {name:'迪迦·奥特曼',traits:['温柔','正义','热血','慈爱'],emoji:'🌟'},
+  {name:'赛罗·奥特曼',traits:['热血','自信','实力','勇敢'],emoji:'⚡'},
+  {name:'赛文·奥特曼',traits:['冷静','智慧','实力','独立'],emoji:'🗡️'},
+  {name:'初代奥特曼',traits:['正义','勇敢','责任','温柔'],emoji:'🔴'},
+  {name:'佐菲',traits:['领导','责任','冷静','正义'],emoji:'🔥'},
+  {name:'泰罗·奥特曼',traits:['热血','勇敢','团队','正义'],emoji:'💥'},
+  {name:'雷欧·奥特曼',traits:['热血','坚韧','格斗','勇敢'],emoji:'👊'},
+  {name:'梦比优斯·奥特曼',traits:['热血','团队','温柔','正义'],emoji:'🌙'},
+  {name:'高斯·奥特曼',traits:['温柔','慈爱','正义','坚韧'],emoji:'💗'},
+  {name:'奈克瑟斯·奥特曼',traits:['独立','坚韧','神秘','冷静'],emoji:'🕯️'},
+  {name:'泽塔·奥特曼',traits:['热血','勇敢','团队','坚韧'],emoji:'🌀'},
+  {name:'特利迦·奥特曼',traits:['热血','正义','温柔','勇敢'],emoji:'✨'},
+  {name:'布莱泽·奥特曼',traits:['独立','实力','神秘','格斗'],emoji:'🐾'},
+  {name:'假面骑士空我',traits:['热血','正义','温柔','勇敢'],emoji:'👍'},
+  {name:'假面骑士龙骑',traits:['正义','热血','温柔','团队'],emoji:'🦇'},
+  {name:'假面骑士Faiz',traits:['独立','温柔','坚韧','神秘'],emoji:'📱'},
+  {name:'假面骑士甲斗王',traits:['自信','实力','智慧','独立'],emoji:'🐞'},
+  {name:'假面骑士电王',traits:['温柔','团队','坚韧','慈爱'],emoji:'🚂'},
+  {name:'假面骑士W',traits:['智慧','团队','冷静','正义'],emoji:'💨'},
+  {name:'假面骑士Build',traits:['智慧','冷静','理性','实力'],emoji:'🧪'},
+  {name:'假面骑士Drive',traits:['责任','正义','冷静','团队'],emoji:'🚓'},
+  {name:'假面骑士Ex-Aid',traits:['热血','智慧','团队','坚韧'],emoji:'🎮'},
+  {name:'假面骑士时王',traits:['领导','自信','责任','正义'],emoji:'👑'},
+  {name:'假面骑士极狐',traits:['自信','实力','灵活','独立'],emoji:'🦊'},
+  {name:'侍战队真剑者',traits:['责任','冷静','正义','团队'],emoji:'⚔️'},
+  {name:'海贼战队豪快者',traits:['独立','热血','实力','团队'],emoji:'🏴‍☠️'},
+  {name:'王样战队帝王者',traits:['领导','正义','勇敢','责任'],emoji:'🐞'},
+  {name:'暴太郎战队咚兄弟',traits:['热血','温柔','灵活','团队'],emoji:'🍑'}
+];
+
+var SERIES_COLOR = {'奥特曼':'#ff6b9d','假面骑士':'#4ecdc4','超级战队':'#ffb347'};
+
+/* ============================================================
+   4. Toast / 自定义确认对话框
+   ============================================================ */
+function toast(msg, duration){
+  var t = document.getElementById('__toast');
+  if(!t){
+    t = document.createElement('div');
+    t.id = '__toast';
+    t.style.cssText = 'position:fixed;top:18px;left:50%;transform:translateX(-50%);background:rgba(50,30,40,.92);color:#fff;padding:12px 26px;border-radius:40px;font-weight:700;font-size:.92rem;z-index:9999;opacity:0;transition:opacity .3s,transform .3s;pointer-events:none;max-width:82%;text-align:center;box-shadow:0 8px 24px rgba(0,0,0,.25);';
+    document.body.appendChild(t);
+  }
+  t.textContent = msg;
+  t.style.opacity = '1';
+  t.style.transform = 'translateX(-50%) translateY(0)';
+  clearTimeout(t.__timer);
+  t.__timer = setTimeout(function(){
+    t.style.opacity = '0';
+    t.style.transform = 'translateX(-50%) translateY(-8px)';
+  }, duration || 2200);
+}
+
+function confirmDialog(msg, onOk, onCancel){
+  var mask = document.createElement('div');
+  mask.style.cssText = 'position:fixed;inset:0;background:rgba(60,30,50,.4);backdrop-filter:blur(5px);display:flex;align-items:center;justify-content:center;z-index:9998;padding:20px;';
+  mask.innerHTML =
+    '<div style="background:#fffaf0;border:5px solid #fff;border-radius:32px;padding:26px 22px;max-width:340px;width:100%;text-align:center;box-shadow:0 25px 60px rgba(0,0,0,.3);">'
+    + '<div style="font-size:.98rem;font-weight:800;color:#4a382c;line-height:1.65;margin-bottom:20px;white-space:pre-line;">'+msg+'</div>'
+    + '<div style="display:flex;gap:10px;">'
+    + '<button id="__cOk" style="flex:1;padding:11px;border:none;border-radius:30px;background:#ffb347;color:#4a2c0c;font-weight:900;font-size:.92rem;cursor:pointer;box-shadow:0 4px 0 #b57a2a;">确定</button>'
+    + '<button id="__cCancel" style="flex:1;padding:11px;border:none;border-radius:30px;background:#e6e0d8;color:#5e5045;font-weight:900;font-size:.92rem;cursor:pointer;box-shadow:0 4px 0 #b8b0a6;">取消</button>'
+    + '</div></div>';
+  document.body.appendChild(mask);
+  var okBtn = document.getElementById('__cOk');
+  var cancelBtn = document.getElementById('__cCancel');
+  function close(){ if(mask.parentNode) mask.parentNode.removeChild(mask); }
+  okBtn.onclick = function(){ close(); if(onOk) onOk(); };
+  cancelBtn.onclick = function(){ close(); if(onCancel) onCancel(); };
+  mask.addEventListener('click', function(e){ if(e.target === mask) close(); });
+}
+
+/* ============================================================
+   5. 音频系统
+   ============================================================ */
+var AudioSys = {
+  ctx:null, bgmGain:null, sfxGain:null, noiseBuf:null,
+  bgmPlaying:false, bgmTimer:null, step:0, _nextTime:0, _stepDur:0,
+  bgmVolume:0.35, sfxVolume:0.60, bgmEnabled:true, sfxEnabled:true,
+  init:function(){
+    if(this.ctx) return;
+    var AC = window.AudioContext || window.webkitAudioContext;
+    if(!AC) return;
+    try{ this.ctx = new AC(); }catch(e){ return; }
+    this.bgmGain = this.ctx.createGain();
+    this.bgmGain.gain.value = this.bgmEnabled ? this.bgmVolume : 0;
+    this.bgmGain.connect(this.ctx.destination);
+    this.sfxGain = this.ctx.createGain();
+    this.sfxGain.gain.value = this.sfxEnabled ? this.sfxVolume : 0;
+    this.sfxGain.connect(this.ctx.destination);
+  },
+  resume:function(){ if(this.ctx && this.ctx.state === 'suspended'){ try{ this.ctx.resume(); }catch(e){} } },
+  applyVolumes:function(){
+    if(!this.ctx) return;
+    var t = this.ctx.currentTime;
+    try{
+      this.bgmGain.gain.setTargetAtTime(this.bgmEnabled ? this.bgmVolume : 0, t, 0.03);
+      this.sfxGain.gain.setTargetAtTime(this.sfxEnabled ? this.sfxVolume : 0, t, 0.03);
+    }catch(e){
+      this.bgmGain.gain.value = this.bgmEnabled ? this.bgmVolume : 0;
+      this.sfxGain.gain.value = this.sfxEnabled ? this.sfxVolume : 0;
+    }
+  },
+  playClick:function(){
+    if(!this.ctx || !this.sfxEnabled || this.sfxVolume <= 0) return;
+    this.resume();
+    var t = this.ctx.currentTime;
+    var o = this.ctx.createOscillator();
+    var g = this.ctx.createGain();
+    o.type = 'sine';
+    o.frequency.setValueAtTime(1050, t);
+    o.frequency.exponentialRampToValueAtTime(1750, t + 0.055);
+    g.gain.setValueAtTime(0.0001, t);
+    g.gain.exponentialRampToValueAtTime(0.9, t + 0.006);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + 0.13);
+    o.connect(g); g.connect(this.sfxGain);
+    o.start(t); o.stop(t + 0.15);
+    var o2 = this.ctx.createOscillator();
+    var g2 = this.ctx.createGain();
+    o2.type = 'triangle';
+    o2.frequency.setValueAtTime(2100, t);
+    g2.gain.setValueAtTime(0.0001, t);
+    g2.gain.exponentialRampToValueAtTime(0.25, t + 0.005);
+    g2.gain.exponentialRampToValueAtTime(0.0001, t + 0.075);
+    o2.connect(g2); g2.connect(this.sfxGain);
+    o2.start(t); o2.stop(t + 0.09);
+  },
+  tone:function(t, freq, dur, type, vol, dest){
+    if(!this.ctx) return;
+    var ctx = this.ctx;
+    var o = ctx.createOscillator(); var g = ctx.createGain();
+    o.type = type || 'sine'; o.frequency.setValueAtTime(freq, t);
+    g.gain.setValueAtTime(0.0001, t);
+    g.gain.exponentialRampToValueAtTime(vol || 0.15, t + 0.012);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+    o.connect(g); g.connect(dest || this.bgmGain);
+    o.start(t); o.stop(t + dur + 0.02);
+  },
+  kick:function(t){
+    if(!this.ctx) return;
+    var ctx = this.ctx;
+    var o = ctx.createOscillator(); var g = ctx.createGain();
+    o.type = 'sine';
+    o.frequency.setValueAtTime(160, t);
+    o.frequency.exponentialRampToValueAtTime(42, t + 0.11);
+    g.gain.setValueAtTime(0.0001, t);
+    g.gain.exponentialRampToValueAtTime(0.95, t + 0.005);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + 0.24);
+    o.connect(g); g.connect(this.bgmGain);
+    o.start(t); o.stop(t + 0.26);
+  },
+  hat:function(t, vol){
+    if(!this.ctx) return;
+    if(!this.noiseBuf){
+      var len = Math.floor(this.ctx.sampleRate * 0.4);
+      this.noiseBuf = this.ctx.createBuffer(1, len, this.ctx.sampleRate);
+      var d = this.noiseBuf.getChannelData(0);
+      for(var i=0;i<len;i++) d[i] = Math.random()*2-1;
+    }
+    var ctx = this.ctx;
+    var src = ctx.createBufferSource(); src.buffer = this.noiseBuf;
+    var f = ctx.createBiquadFilter(); f.type = 'highpass'; f.frequency.value = 7500;
+    var g = ctx.createGain();
+    g.gain.setValueAtTime(vol || 0.18, t);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + 0.045);
+    src.connect(f); f.connect(g); g.connect(this.bgmGain);
+    src.start(t); src.stop(t + 0.06);
+  },
+  bass:function(t, freq, dur){
+    this.tone(t, freq, dur, 'sawtooth', 0.085);
+    this.tone(t, freq / 2, dur, 'sine', 0.06);
+  },
+  scheduleStep:function(step, t){
+    var bar = Math.floor(step / 16) % 4;
+    var s = step % 16;
+    var roots = [220, 174.61, 261.63, 196];
+    if(s === 0 || s === 8 || (bar % 2 === 1 && s === 4)) this.kick(t);
+    if(s % 2 === 0) this.hat(t, (s % 4 === 0) ? 0.26 : 0.13);
+    if(s === 0 || s === 8) this.bass(t, roots[bar], 0.36);
+    var f = MELODY_MAP[step % 64];
+    if(f){ this.tone(t, f, 0.17, 'square', 0.062); this.tone(t, f * 2, 0.11, 'sine', 0.028); }
+  },
+  bgmStart:function(){
+    this.init();
+    if(!this.ctx) return;
+    this.resume();
+    if(this.bgmPlaying) return;
+    this.bgmPlaying = true;
+    this.step = 0;
+    var self = this;
+    var bpm = 128;
+    this._stepDur = 60 / bpm / 4;
+    this._nextTime = this.ctx.currentTime + 0.15;
+    this.bgmTimer = setInterval(function(){
+      if(!self.ctx || !self.bgmPlaying) return;
+      if(self._nextTime < self.ctx.currentTime - 0.35) self._nextTime = self.ctx.currentTime + 0.05;
+      var ahead = self.ctx.currentTime + 0.22;
+      var guard = 0;
+      while(self._nextTime < ahead && guard++ < 200){
+        try{ self.scheduleStep(self.step, self._nextTime); }catch(e){}
+        self._nextTime += self._stepDur; self.step++;
+      }
+    }, 55);
+  },
+  bgmStop:function(){
+    this.bgmPlaying = false;
+    if(this.bgmTimer){ clearInterval(this.bgmTimer); this.bgmTimer = null; }
+  }
+};
+
+var MELODY = [
+  [0,440],[2,523.25],[4,659.25],[6,523.25],[8,440],[10,659.25],[12,587.33],[14,523.25],
+  [16,349.23],[18,440],[20,523.25],[22,440],[24,349.23],[26,523.25],[28,659.25],[30,523.25],
+  [32,523.25],[34,659.25],[36,783.99],[38,659.25],[40,523.25],[42,783.99],[44,659.25],[46,523.25],
+  [48,392],[50,493.88],[52,587.33],[54,493.88],[56,392],[58,587.33],[60,493.88],[62,392]
+];
+var MELODY_MAP = {};
+for(var _mi=0;_mi<MELODY.length;_mi++){ MELODY_MAP[MELODY[_mi][0]] = MELODY[_mi][1]; }
+
+/* ============================================================
+   6. 状态 & 工具
+   ============================================================ */
+var STORAGE_KEY = 'tokusatsu_chars_v3';
+var SETTINGS_KEY = 'tokusatsu_settings_v3';
+
+var characters = [];
+var draftImages = {};
+var currentQuestions = [];
+var currentIdx = 0;
+var answers = [];
+var isAdmin = false;
+var pendingImageIdx = -1;
+var pendingNewImage = '';
+var editingIdx = -1;
+
+function $(id){ return document.getElementById(id); }
+function esc(s){
+  return String(s==null?'':s).replace(/[&<>"']/g,function(m){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m];
+  });
+}
+function seriesClass(s){
+  if(s==='奥特曼') return 'ot';
+  if(s==='假面骑士') return 'kr';
+  return 'sd';
+}
+function pickRandom(arr, n){
+  var copy = arr.slice();
+  var out = [];
+  for(var i=0; i<n && copy.length>0; i++){
+    var idx = Math.floor(Math.random()*copy.length);
+    out.push(copy.splice(idx,1)[0]);
+  }
+  return out;
+}
+
+function loadChars(){
+  try{
+    var raw = localStorage.getItem(STORAGE_KEY);
+    if(raw){
+      var arr = JSON.parse(raw);
+      if(Array.isArray(arr) && arr.length) return arr;
+    }
+  }catch(e){}
+  return DEFAULT_CHARS.map(function(c){ return {name:c.name,series:c.series,tag:c.tag,img:''}; });
+}
+
+function saveChars(){
+  try{
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(characters));
+    return true;
+  }catch(e){
+    toast('⚠️ 本地存储空间不足！请使用更小图片或删除部分图片', 3200);
+    return false;
+  }
+}
+
+function fileToCompressedDataURL(file, maxSide, cb){
+  var reader = new FileReader();
+  reader.onload = function(ev){
+    var img = new Image();
+    img.onload = function(){
+      var w = img.width, h = img.height;
+      if(w > maxSide || h > maxSide){
+        var r = Math.min(maxSide/w, maxSide/h);
+        w = Math.round(w*r); h = Math.round(h*r);
+      }
+      var cv = document.createElement('canvas');
+      cv.width = w; cv.height = h;
+      var ctx = cv.getContext('2d');
+      ctx.drawImage(img, 0, 0, w, h);
+      try{ cb(cv.toDataURL('image/png')); }
+      catch(err){ cb(ev.target.result); }
+    };
+    img.onerror = function(){ cb(ev.target.result); };
+    img.src = ev.target.result;
+  };
+  reader.onerror = function(){ cb(''); };
+  reader.readAsDataURL(file);
+}
+
+/* ============================================================
+   7. 视图切换
+   ============================================================ */
+function showView(id){
+  var views = document.querySelectorAll('.view');
+  for(var i=0;i<views.length;i++) views[i].classList.remove('active');
+  var el = $(id);
+  if(el) el.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* ============================================================
+   8. 渲染
+   ============================================================ */
+function renderPeek(){
+  var wrap = $('peekWrap');
+  var html = '';
+  var list = characters.slice(0,32);
+  for(var i=0;i<list.length;i++){
+    html += '<span class="chip '+seriesClass(list[i].series)+'">'+esc(list[i].name)+'</span>';
+  }
+  wrap.innerHTML = html;
+}
+
+function renderRoster(){
+  var grid = $('rosterGrid');
+  var html = '';
+  for(var i=0;i<characters.length;i++){
+    var c = characters[i];
+    var color = SERIES_COLOR[c.series] || '#ccc';
+    html += '<div class="card" style="--c:'+color+'">'
+          +   '<div class="ph">'+(c.img ? '<img src="'+c.img+'" alt="">' : '🦸')+'</div>'
+          +   '<div class="nm">'+esc(c.name)+'</div>'
+          +   '<div class="sr">'+esc(c.series)+'</div>'
+          +   (c.tag ? '<div class="tg">'+esc(c.tag)+'</div>' : '')
+          + '</div>';
+  }
+  grid.innerHTML = html;
+  $('rosterCount').textContent = '共 '+characters.length+' 位';
+}
+
+/* ============================================================
+   9. 答题
+   ============================================================ */
+function buildNewTest(){
+  var singles = pickRandom(SINGLE_BANK, 10).map(function(q){
+    return {type:'single', q:q.q, opts:q.opts};
+  });
+  var multis = pickRandom(MULTI_BANK, 5).map(function(q){
+    return {type:'multiple', q:q.q, opts:q.opts};
+  });
+  var bools = pickRandom(BOOL_BANK, 10).map(function(q){
+    return {type:'boolean', q:q.q, opts:q.opts};
+  });
+  return singles.concat(multis).concat(bools);
+}
+
+function renderQuestion(){
+  var q = currentQuestions[currentIdx];
+  var total = currentQuestions.length;
+
+  $('progressText').textContent = '第 '+(currentIdx+1)+' / '+total+' 题';
+  $('typeTag').textContent = q.type==='single' ? '单选题' : (q.type==='multiple' ? '多选题' : '对错题');
+  $('progressBar').style.width = ((currentIdx)/total*100).toFixed(1)+'%';
+  $('qText').textContent = q.q;
+  $('multiTip').style.display = (q.type==='multiple') ? 'block' : 'none';
+
+  var saved = answers[currentIdx];
+  var box = $('options');
+  box.innerHTML = '';
+
+  for(var i=0;i<q.opts.length;i++){
+    (function(i){
+      var opt = q.opts[i];
+      var div = document.createElement('div');
+      div.className = 'option';
+      if(q.type==='multiple'){
+        if(Array.isArray(saved) && saved.indexOf(i) > -1) div.classList.add('sel-multi');
+      }else{
+        if(saved === i) div.classList.add('sel');
+      }
+      var markText = (q.type==='boolean') ? '•' : String.fromCharCode(65+i);
+      div.innerHTML = '<span class="mark">'+markText+'</span><span class="opt-text">'+esc(opt.t)+'</span>';
+
+      div.addEventListener('click', function(){
+        AudioSys.playClick();
+        if(q.type === 'multiple'){
+          var cur = answers[currentIdx];
+          if(!Array.isArray(cur)) cur = [];
+          else cur = cur.slice();
+          var pos = cur.indexOf(i);
+          if(pos > -1) cur.splice(pos,1);
+          else cur.push(i);
+          answers[currentIdx] = cur;
+          renderQuestion();
+        }else{
+          answers[currentIdx] = i;
+          var all = box.querySelectorAll('.option');
+          for(var k=0;k<all.length;k++) all[k].classList.remove('sel');
+          div.classList.add('sel');
+          var goIdx = currentIdx;
+          setTimeout(function(){
+            if(currentIdx !== goIdx) return;
+            if(currentIdx < total-1){
+              currentIdx++;
+              renderQuestion();
+            }else{
+              calculateResult();
+            }
+          }, 230);
+        }
+      });
+      box.appendChild(div);
+    })(i);
+  }
+  $('prevBtn').disabled = (currentIdx === 0);
+  $('nextBtn').textContent = (currentIdx === total-1) ? '✨ 查看结果' : '下一题 ▶';
+}
+
+/* ============================================================
+   10. 结果计算
+   ============================================================ */
+function calculateResult(){
+  for(var i=0;i<currentQuestions.length;i++){
+    var a = answers[i];
+    if(a === null || a === undefined || (Array.isArray(a) && a.length === 0)){
+      toast('第 '+(i+1)+' 题还没有作答哦～', 1800);
+      currentIdx = i;
+      renderQuestion();
+      return;
+    }
+  }
+
+  var score = {};
+  function addWeight(w){
+    if(!w) return;
+    for(var k in w){ score[k] = (score[k] || 0) + w[k]; }
+  }
+  for(var qi=0; qi<currentQuestions.length; qi++){
+    var q = currentQuestions[qi];
+    var ans = answers[qi];
+    if(q.type === 'multiple'){
+      for(var m=0;m<ans.length;m++) addWeight(q.opts[ans[m]].w);
+    }else{
+      addWeight(q.opts[ans].w);
+    }
+  }
+
+  var best = null, bestVal = -Infinity;
+  for(var p=0;p<MATCH_POOL.length;p++){
+    var cand = MATCH_POOL[p];
+    var sum = 0;
+    for(var t=0;t<cand.traits.length;t++) sum += (score[cand.traits[t]] || 0);
+    sum = sum / Math.sqrt(cand.traits.length);
+    if(sum > bestVal){ bestVal = sum; best = cand; }
+  }
+
+  var dbChar = null;
+  for(var d=0;d<characters.length;d++){
+    if(characters[d].name === best.name){ dbChar = characters[d]; break; }
+  }
+  if(!dbChar) dbChar = {name:best.name, series:'', tag:'', img:''};
+
+  var imgBox = $('resImg');
+  if(dbChar.img) imgBox.innerHTML = '<img src="'+dbChar.img+'" alt="">';
+  else imgBox.textContent = best.emoji || '🦸';
+  $('resName').textContent = dbChar.name;
+  $('resSeries').textContent = dbChar.series || '特摄英雄';
+  $('resDesc').textContent = buildDesc(best, dbChar);
+  $('progressBar').style.width = '100%';
+  showView('resultView');
+}
+
+function buildDesc(cand, dbChar){
+  var t = cand.traits;
+  var parts = ['你和「'+dbChar.name+'」的灵魂契合度最高！'];
+  if(t.indexOf('热血') > -1) parts.push('你行动力爆表，遇到事情从不含糊，是那种“先冲上去再说”的热血派。');
+  if(t.indexOf('勇敢') > -1) parts.push('面对强敌你从不腿软，越是逆境越能激发出斗志。');
+  if(t.indexOf('温柔') > -1 || t.indexOf('慈爱') > -1) parts.push('你有一颗柔软的心，总是先想到别人，是队伍里最温暖的那束光。');
+  if(t.indexOf('智慧') > -1) parts.push('你脑子转得快，擅长分析局势，常常一句话点醒所有人。');
+  if(t.indexOf('冷静') > -1 || t.indexOf('理性') > -1) parts.push('你越到关键时刻越沉得住气，很少被情绪牵着走。');
+  if(t.indexOf('领导') > -1 || t.indexOf('责任') > -1) parts.push('你天生有一种让人愿意跟随的气场，关键时刻扛得起责任。');
+  if(t.indexOf('独立') > -1) parts.push('你习惯自己扛事情，享受独处的时光，但该出手时绝不掉链子。');
+  if(t.indexOf('坚韧') > -1) parts.push('被打倒多少次你就站起来多少次，骨子里有一股不服输的劲儿。');
+  if(t.indexOf('正义') > -1) parts.push('你心里有一条不能碰的底线，看到不公就忍不住想管。');
+  if(t.indexOf('团队') > -1) parts.push('你相信伙伴的力量，一个人再强也赢不过并肩作战的默契。');
+  if(t.indexOf('实力') > -1) parts.push('你崇尚真本事，觉得说再多不如用行动证明自己。');
+  if(t.indexOf('神秘') > -1) parts.push('你身上带着一点看不透的气质，别人总觉得你藏着故事。');
+  if(t.indexOf('自信') > -1) parts.push('你对自己的判断很有信心，认定的事就会走到底。');
+  if(t.indexOf('灵活') > -1) parts.push('你不按套路出牌，总能想到别人想不到的解法。');
+  parts.push('在特摄的世界里，你会是那个——“'+ (dbChar.tag || '闪耀属于自己的英雄') +'”的存在。');
+  return parts.join('');
+}
+
+/* ============================================================
+   11. 管理员
+   ============================================================ */
+function renderAdminTable(){
+  var tb = $('adminTbody');
+  var html = '';
+  for(var i=0;i<characters.length;i++){
+    var c = characters[i];
+    var hasDraft = (draftImages[i] !== undefined);
+    var showImg = hasDraft ? draftImages[i] : c.img;
+    html += '<tr>'
+          +   '<td><div class="th">'
+          +     (showImg ? '<img src="'+showImg+'" alt="">' : '🦸')
+          +     (hasDraft ? '<span class="draft-badge">待保存</span>' : '')
+          +   '</div></td>'
+          +   '<td class="cell-nm">'+esc(c.name)+(c.tag ? '<small>'+esc(c.tag)+'</small>' : '')+'</td>'
+          +   '<td><span class="pill">'+esc(c.series)+'</span></td>'
+          +   '<td><div class="op-cell">'
+          +     '<button class="mini-btn img" data-act="img" data-idx="'+i+'">图片</button>'
+          +     '<button class="mini-btn edit" data-act="edit" data-idx="'+i+'">编辑</button>'
+          +     '<button class="mini-btn del" data-act="del" data-idx="'+i+'">删除</button>'
+          +   '</div></td>'
+          + '</tr>';
+  }
+  tb.innerHTML = html;
+  updateSaveBtnState();
+}
+
+function updateSaveBtnState(){
+  var n = Object.keys(draftImages).length;
+  var btn = $('saveImgBtn');
+  if(!btn) return;
+  if(n > 0){
+    btn.textContent = '💾 保存图片修改 ('+n+')';
+    btn.classList.add('has-draft');
+  }else{
+    btn.textContent = '💾 保存图片修改';
+    btn.classList.remove('has-draft');
+  }
+}
+
+$('adminTbody').addEventListener('click', function(e){
+  var btn = e.target.closest('button');
+  if(!btn) return;
+  var act = btn.getAttribute('data-act');
+  var idx = parseInt(btn.getAttribute('data-idx'),10);
+  if(isNaN(idx)) return;
+
+  if(act === 'del'){
+    var c = characters[idx];
+    if(!c) return;
+    confirmDialog('确定要删除「'+c.name+'」吗？\n此操作不可撤销。', function(){
+      characters.splice(idx,1);
+      var nd = {};
+      for(var k in draftImages){
+        var ki = parseInt(k,10);
+        if(ki === idx) continue;
+        if(ki > idx) nd[ki-1] = draftImages[k];
+        else nd[ki] = draftImages[k];
+      }
+      draftImages = nd;
+      if(saveChars()){
+        renderAdminTable();
+        renderRoster();
+        renderPeek();
+        toast('✅ 已删除「'+c.name+'」');
+      }
+    });
+  }else if(act === 'img'){
+    pendingImageIdx = idx;
+    $('hiddenFile').value = '';
+    $('hiddenFile').click();
+  }else if(act === 'edit'){
+    editingIdx = idx;
+    var ch = characters[idx];
+    $('editName').value = ch.name || '';
+    $('editSeries').value = ch.series || '';
+    $('editTag').value = ch.tag || '';
+    $('editModal').classList.add('on');
+    setTimeout(function(){ $('editName').focus(); }, 80);
+  }
+});
+
+$('hiddenFile').addEventListener('change', function(){
+  var f = this.files && this.files[0];
+  if(!f) return;
+  if(pendingImageIdx < 0 || !characters[pendingImageIdx]) return;
+  var targetIdx = pendingImageIdx;
+  pendingImageIdx = -1;
+  fileToCompressedDataURL(f, 240, function(dataURL){
+    if(!dataURL){ toast('❌ 图片读取失败，请换一张试试'); return; }
+    draftImages[targetIdx] = dataURL;
+    renderAdminTable();
+    toast('📸 已加入预览，记得点保存！', 2200);
+  });
+});
+
+$('saveImgBtn').addEventListener('click', function(){
+  var keys = Object.keys(draftImages);
+  if(keys.length === 0){
+    toast('📷 目前没有待保存的图片修改，请先上传');
+    return;
+  }
+  var count = 0;
+  for(var k=0;k<keys.length;k++){
+    var idx = parseInt(keys[k],10);
+    if(characters[idx]){
+      characters[idx].img = draftImages[keys[k]];
+      count++;
+    }
+  }
+  if(saveChars()){
+    draftImages = {};
+    renderAdminTable();
+    renderRoster();
+    toast('✅ 已保存 '+count+' 张图片，图鉴头像已更新！', 2400);
+  }
+});
+
+$('editCancel').addEventListener('click', function(){
+  $('editModal').classList.remove('on');
+  editingIdx = -1;
+});
+
+$('editSave').addEventListener('click', function(){
+  if(editingIdx < 0 || !characters[editingIdx]){
+    $('editModal').classList.remove('on');
+    return;
+  }
+  var name = $('editName').value.trim();
+  var series = $('editSeries').value.trim();
+  var tag = $('editTag').value.trim();
+  if(!name){ toast('角色名不能为空'); $('editName').focus(); return; }
+  if(!series){ toast('系列不能为空'); $('editSeries').focus(); return; }
+
+  characters[editingIdx].name = name;
+  characters[editingIdx].series = series;
+  characters[editingIdx].tag = tag;
+
+  if(saveChars()){
+    $('editModal').classList.remove('on');
+    editingIdx = -1;
+    renderAdminTable();
+    renderRoster();
+    renderPeek();
+    toast('✅ 已保存修改');
+  }
+});
+
+$('editModal').addEventListener('click', function(e){
+  if(e.target === this){
+    this.classList.remove('on');
+    editingIdx = -1;
+  }
+});
+
+$('newImgFile').addEventListener('change', function(){
+  var f = this.files && this.files[0];
+  if(!f){ pendingNewImage=''; $('newImgState').textContent='未选择'; return; }
+  $('newImgState').textContent = '读取中…';
+  fileToCompressedDataURL(f, 240, function(dataURL){
+    pendingNewImage = dataURL || '';
+    $('newImgState').textContent = pendingNewImage ? '已选择 ✓' : '读取失败';
+  });
+});
+
+$('addBtn').addEventListener('click', function(){
+  var name = $('newName').value.trim();
+  var series = $('newSeries').value.trim();
+  var tag = $('newTag').value.trim();
+  if(!name){ toast('请填写角色名'); $('newName').focus(); return; }
+  if(!series){ toast('请填写所属系列'); $('newSeries').focus(); return; }
+  characters.push({name:name, series:series, tag:tag, img:pendingNewImage || ''});
+  if(saveChars()){
+    renderAdminTable();
+    renderRoster();
+    renderPeek();
+    $('newName').value = '';
+    $('newSeries').value = '';
+    $('newTag').value = '';
+    $('newImgFile').value = '';
+    $('newImgState').textContent = '未选择';
+    pendingNewImage = '';
+    toast('✅ 已添加：'+name);
+  }
+});
+
+/* ============================================================
+   12. 声音设置
+   ============================================================ */
+function loadSettings(){
+  try{
+    var raw = localStorage.getItem(SETTINGS_KEY);
+    if(!raw) return;
+    var s = JSON.parse(raw);
+    if(typeof s.bgmEnabled === 'boolean') AudioSys.bgmEnabled = s.bgmEnabled;
+    if(typeof s.sfxEnabled === 'boolean') AudioSys.sfxEnabled = s.sfxEnabled;
+    if(typeof s.bgmVolume === 'number') AudioSys.bgmVolume = s.bgmVolume;
+    if(typeof s.sfxVolume === 'number') AudioSys.sfxVolume = s.sfxVolume;
+  }catch(e){}
+}
+function persistSettings(){
+  try{
+    localStorage.setItem(SETTINGS_KEY, JSON.stringify({
+      bgmEnabled: AudioSys.bgmEnabled, sfxEnabled: AudioSys.sfxEnabled,
+      bgmVolume: AudioSys.bgmVolume, sfxVolume: AudioSys.sfxVolume
+    }));
+  }catch(e){}
+}
+function syncSettingsUI(){
+  $('bgmToggle').checked = AudioSys.bgmEnabled;
+  $('sfxToggle').checked = AudioSys.sfxEnabled;
+  $('bgmVol').value = Math.round(AudioSys.bgmVolume * 100);
+  $('sfxVol').value = Math.round(AudioSys.sfxVolume * 100);
+}
+loadSettings();
+syncSettingsUI();
+
+$('settingsFab').addEventListener('click', function(e){
+  e.stopPropagation();
+  $('settingsPanel').classList.toggle('on');
+  AudioSys.init();
+  AudioSys.resume();
+  if(AudioSys.bgmEnabled && AudioSys.ctx && !AudioSys.bgmPlaying) AudioSys.bgmStart();
+});
+$('setClose').addEventListener('click', function(){ $('settingsPanel').classList.remove('on'); });
+document.addEventListener('click', function(e){
+  var p = $('settingsPanel');
+  if(!p.classList.contains('on')) return;
+  if(p.contains(e.target) || e.target === $('settingsFab')) return;
+  p.classList.remove('on');
+});
+$('bgmToggle').addEventListener('change', function(){
+  AudioSys.init();
+  AudioSys.bgmEnabled = this.checked;
+  if(AudioSys.bgmEnabled){ AudioSys.bgmStart(); AudioSys.applyVolumes(); }
+  else{ AudioSys.bgmStop(); AudioSys.applyVolumes(); }
+  persistSettings();
+});
+$('bgmVol').addEventListener('input', function(){
+  AudioSys.bgmVolume = parseInt(this.value,10)/100;
+  AudioSys.applyVolumes();
+  persistSettings();
+});
+$('sfxToggle').addEventListener('change', function(){
+  AudioSys.init();
+  AudioSys.sfxEnabled = this.checked;
+  AudioSys.applyVolumes();
+  persistSettings();
+  if(AudioSys.sfxEnabled) AudioSys.playClick();
+});
+$('sfxVol').addEventListener('input', function(){
+  AudioSys.sfxVolume = parseInt(this.value,10)/100;
+  AudioSys.applyVolumes();
+  persistSettings();
+});
+$('sfxVol').addEventListener('change', function(){
+  if(AudioSys.sfxEnabled) AudioSys.playClick();
+});
+
+/* ============================================================
+   13. 主流程
+   ============================================================ */
+
+/* ⭐ 管理员凭证：只有账号密码完全正确才能进入后台 */
+var ADMIN_USER = 'admin';
+var ADMIN_PASS = 'admin123';
+
+$('adminEntryBtn').addEventListener('click', function(){
+  if(isAdmin){
+    showView('adminView');
+    renderAdminTable();
+  }else{
+    $('admPass').value = '';
+    $('loginModal').classList.add('on');
+    setTimeout(function(){ $('admUser').focus(); }, 50);
+  }
+});
+
+$('loginCancel').addEventListener('click', function(){
+  $('loginModal').classList.remove('on');
+  $('admPass').value = '';
+});
+
+$('loginOk').addEventListener('click', function(){
+  var u = $('admUser').value.trim();
+  var p = $('admPass').value;
+  if(u === ADMIN_USER && p === ADMIN_PASS){
+    isAdmin = true;
+    $('loginModal').classList.remove('on');
+    $('admUser').value = '';
+    $('admPass').value = '';
+    showView('adminView');
+    renderAdminTable();
+    toast('👑 欢迎回来，管理员');
+  }else{
+    isAdmin = false;
+    $('admPass').value = '';
+    $('admPass').focus();
+    toast('❌ 账号或密码错误，请重试', 2400);
+  }
+});
+
+$('admPass').addEventListener('keydown', function(e){
+  if(e.key === 'Enter'){ e.preventDefault(); $('loginOk').click(); }
+});
+$('admUser').addEventListener('keydown', function(e){
+  if(e.key === 'Enter'){ e.preventDefault(); $('admPass').focus(); }
+});
+
+$('loginModal').addEventListener('click', function(e){
+  if(e.target === this){
+    this.classList.remove('on');
+    $('admPass').value = '';
+  }
+});
+
+$('adminLogout').addEventListener('click', function(){
+  var n = Object.keys(draftImages).length;
+  if(n > 0){
+    confirmDialog('还有 '+n+' 张图片未保存，确定要退出吗？', function(){
+      draftImages = {};
+      isAdmin = false;
+      showView('homeView');
+      toast('已退出管理员模式');
+    });
+  }else{
+    isAdmin = false;
+    showView('homeView');
+    toast('已退出管理员模式');
+  }
+});
+
+$('startBtn').addEventListener('click', function(){
+  AudioSys.init();
+  AudioSys.resume();
+  if(AudioSys.bgmEnabled && !AudioSys.bgmPlaying) AudioSys.bgmStart();
+  currentQuestions = buildNewTest();
+  currentIdx = 0;
+  answers = new Array(currentQuestions.length).fill(null);
+  renderQuestion();
+  showView('quizView');
+});
+
+$('rosterBtn').addEventListener('click', function(){ renderRoster(); showView('rosterView'); });
+$('peekMore').addEventListener('click', function(){ renderRoster(); showView('rosterView'); });
+$('rosterBack').addEventListener('click', function(){ showView('homeView'); });
+
+$('prevBtn').addEventListener('click', function(){ if(currentIdx > 0){ currentIdx--; renderQuestion(); } });
+$('nextBtn').addEventListener('click', function(){
+  var a = answers[currentIdx];
+  var empty = (a === null || a === undefined || (Array.isArray(a) && a.length === 0));
+  if(empty){ toast('请先回答本题哦～', 1600); return; }
+  if(currentIdx < currentQuestions.length - 1){ currentIdx++; renderQuestion(); }
+  else{ calculateResult(); }
+});
+
+$('quizBackBtn').addEventListener('click', function(){
+  showView('homeView');
+});
+
+$('againBtn').addEventListener('click', function(){
+  currentQuestions = buildNewTest();
+  currentIdx = 0;
+  answers = new Array(currentQuestions.length).fill(null);
+  renderQuestion();
+  showView('quizView');
+});
+$('homeBtn').addEventListener('click', function(){ showView('homeView'); });
+
+/* ============================================================
+   14. 启动
+   ============================================================ */
+characters = loadChars();
+renderPeek();
+renderRoster();
+
+var audioUnlocked = false;
+function unlockAudio(){
+  if(audioUnlocked) return;
+  audioUnlocked = true;
+  AudioSys.init();
+  if(AudioSys.ctx){
+    AudioSys.resume();
+    AudioSys.applyVolumes();
+    if(AudioSys.bgmEnabled) AudioSys.bgmStart();
+  }
+  document.removeEventListener('pointerdown', unlockAudio);
+  document.removeEventListener('keydown', unlockAudio);
+}
+document.addEventListener('pointerdown', unlockAudio);
+document.addEventListener('keydown', unlockAudio);
+
+})();
+</script>
+</body>
+</html>
